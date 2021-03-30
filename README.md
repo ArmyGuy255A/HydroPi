@@ -21,3 +21,20 @@ docker-compose -f "docker-compose.debug.yml" down
 Download and install (https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner)This
 npm install
 dotnet restore
+
+## Build for Dev
+```
+npm run webpack-dev
+```
+
+## Build for Production
+```
+npm run webpack
+```
+
+## Build for DevOps
+```
+npm install
+npm run webpack
+
+```
