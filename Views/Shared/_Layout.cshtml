@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - HydroPi</title>
+
+        <!-- Common styles here -->
+        <link rel="stylesheet" href="~/bundles/css/style.min.css" />
+        <link rel="stylesheet" href="~/assets/icons/all.css">
+    </head>
+
+
+    <body class="c-app c-no-layout-transition">
+        <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
+            <!-- Sidebar content here -->
+            <div class="c-sidebar-brand d-md-down-none">
+                <svg class="c-sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
+                    <use xlink:href="assets/brand/coreui-pro.svg#full"></use>
+                </svg>
+                <svg class="c-sidebar-brand-minimized" width="46" height="46" alt="CoreUI Logo">
+                    <use xlink:href="assets/brand/coreui-pro.svg#signet"></use>
+                </svg>
+            </div>
+
+            @RenderSection("SidebarContent", false)
+
+            <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-unfoldable"></button>
+        </div>
+        <div class="c-sidebar c-sidebar-lg c-sidebar-light c-sidebar-right c-sidebar-overlaid" id="aside">
+            <partial name="_SidebarAside">
+        </div>
+        <div class="c-wrapper">
+            <header class="c-header c-header-light c-header-fixed">
+                <!-- Header content here -->
+                <partial name="_Header">
+            </header>
+            <div class="c-body">
+                <main class="c-main">
+                    <div class="container-fluid">
+                        <div class="fade-in">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <footer class="c-footer">
+                <!-- Footer content here -->
+                <div class="container">
+                    &copy; 2021 - HydroPi - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </div>
+
+            </footer>
+        </div>
+
+        <!-- Common scripts here -->
+        <script src="~/bundles/coreui.min.js"></script>
+        <script src="~/bundles/site.min.js"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
+
+</html>

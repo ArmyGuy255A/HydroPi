@@ -1,0 +1,28 @@
+﻿{
+  "compilerOptions": {
+    "module": "ES2015",
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "target": "es5",
+    "moduleResolution": "Node",
+    "lib": [
+      "ES2015",
+      "ES5",
+      "DOM"
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+      "Scripts/type-overrides"
+    ],
+    "pretty": true,
+    "allowSyntheticDefaultImports": false
+  },
+  "exclude": [
+    "node_modules",
+    "wwwroot"
+  ],
+  "compileOnSave": true
+}
