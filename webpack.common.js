@@ -28,6 +28,9 @@ module.exports = {
         //style: [
         //    "./Styles/style.scss"
         //],
+        //jquery: [
+        //    "./node_modules/jquery/dist/jquery.js"
+        //],
         style: [
             "./node_modules/@coreui/coreui-pro/dist/css/coreui.css",
             "./Styles/style.scss"
@@ -82,4 +85,8 @@ module.exports = {
             filename: "css/[name].min.css"
         })
     ]
+    //],
+    //externals: {
+    //    jquery: 'jQuery'
+    //}
 };
