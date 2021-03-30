@@ -1,4 +1,4 @@
-using HydroPi.Models.Settings;
+using HydroPi.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;

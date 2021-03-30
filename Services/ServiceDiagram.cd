@@ -23,11 +23,27 @@
       <FileName>Models\Sensor.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HydroPi.Controllers.API.GenericMongoDbEntityController&lt;TEntity, TMdbService&gt;" Collapsed="true">
+  <Class Name="HydroPi.Controllers.API.GenericMongoDbEntityController&lt;TEntity, TMongoDbService&gt;" Collapsed="true">
     <Position X="3.5" Y="7" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAABAAAAAAAAAAQEAAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAABAAAAAABAAAAAAAAAAAEAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Controllers\API\GenericMongoDbEntityController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HydroPi.Services.GenericMongoDbService&lt;TEntity&gt;" Collapsed="true">
+    <Position X="9.5" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAIAABAAAAABAAAAAAAAFAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\GenericMongoDbService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HydroPi.Services.SensorService" Collapsed="true">
+    <Position X="9" Y="3.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\SensorService.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="HydroPi.Repository.Interfaces.IEntity" Collapsed="true">
@@ -73,10 +89,24 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="HydroPi.Repository.Interfaces.IProductRepository" Collapsed="true">
-    <Position X="4" Y="3.75" Width="2" />
+    <Position X="4" Y="3.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Repository\Interfaces\IProductRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HydroPi.Services.IGenericMongoDbService&lt;TEntity&gt;" Collapsed="true">
+    <Position X="9.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAABAAAAABAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\IGenericMongoDbService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HydroPi.Controllers.API.IGenericMongoDbEntityController&lt;TEntity&gt;" Collapsed="true">
+    <Position X="3.5" Y="5.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAABAAAAAAAAAAAEAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\API\IGenericMongoDbEntityController.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

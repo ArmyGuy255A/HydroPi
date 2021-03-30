@@ -112,10 +112,5 @@
   "bugs": {
     "url": "https://github.com/ArmyGuy255A/HydroPi/issues"
   },
-  "homepage": "https://github.com/ArmyGuy255A/HydroPi#readme",
-  "-vs-binding": {
-    "BeforeBuild": [
-      "webpack"
-    ]
-  }
+  "homepage": "https://github.com/ArmyGuy255A/HydroPi#readme"
 }

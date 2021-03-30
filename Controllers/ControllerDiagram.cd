@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HydroPi.Controllers.API.GenericMongoDbEntityController&lt;TEntity, TMongoDbService&gt;" Collapsed="true">
+    <Position X="6" Y="1.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABAAAAAABAAAAAAAAAAAEAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\API\GenericMongoDbEntityController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HydroPi.Controllers.API.SensorsController" Collapsed="true">
+    <Position X="6" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\API\SensorsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="HydroPi.Controllers.API.IGenericMongoDbEntityController&lt;TEntity&gt;" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAABAAAAAAAAAAAEAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\API\IGenericMongoDbEntityController.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

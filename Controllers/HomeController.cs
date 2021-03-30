@@ -20,6 +20,10 @@ namespace HydroPi.Controllers
 
         public IActionResult Index()
         {
+
+            Sensor s = new Sensor();
+            Output o = new Output();
+
             _logger.LogInformation("Hello, world!");
             return View();
         }

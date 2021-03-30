@@ -4,9 +4,9 @@ using System;
 
 namespace HydroPi.Models
 {
-    public class Sensor : MongoEntity
+    public class Output : MongoEntity
     {
-        public Sensor ()
+        public Output ()
         {
 
         }

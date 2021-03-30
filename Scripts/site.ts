@@ -6,7 +6,7 @@ import { Alert } from "bootstrap";
 
 $(document).ready(function () {
     /*$('[data-toggle="tooltip"]').tooltip();*/
-    alert("Hello World!");
+    //alert("Hello World!");
 })
 
 ////export function ShowLoadingModal() {

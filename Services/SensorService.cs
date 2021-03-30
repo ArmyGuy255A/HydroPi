@@ -1,5 +1,5 @@
 ﻿using HydroPi.Models;
-using HydroPi.Models.Settings;
+using HydroPi.Settings;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using System;
@@ -9,37 +9,34 @@ using System.Threading.Tasks;
 
 namespace HydroPi.Services
 {
-    public class SensorService
+    public class SensorService : GenericMongoDbService<Sensor>
     {
         private readonly IMongoCollection<Sensor> _sensors;
         //private readonly HydroPiDatabaseSettings _databaseConfig;
-        public SensorService(IOptionsMonitor<HydroPiDatabaseSettings> databaseSettings)
+        public SensorService(IOptionsMonitor<HydroPiDatabaseSettings> databaseSettings) : base(databaseSettings, databaseSettings.CurrentValue.Collections.Sensors)
         {
-            var client = new MongoClient(databaseSettings.CurrentValue.MongoDb);
-            var database = client.GetDatabase(databaseSettings.CurrentValue.DatabaseName);
-            
-            _sensors = database.GetCollection<Sensor>(databaseSettings.CurrentValue.SensorCollectionName);
+            Console.Write("BREAK");
         }
 
-        public List<Sensor> Get() =>
-            _sensors.Find(sensor => true).ToList();
+        //public List<Sensor> Get() =>
+        //    _sensors.Find(sensor => true).ToList();
 
-        public Sensor Get(string id) =>
-            _sensors.Find<Sensor>(sensor => sensor.Id == id).FirstOrDefault();
+        //public Sensor Get(string id) =>
+        //    _sensors.Find<Sensor>(sensor => sensor.Id == id).FirstOrDefault();
 
-        public Sensor Create(Sensor sensor)
-        {
-            _sensors.InsertOne(sensor);
-            return sensor;
-        }
+        //public Sensor Create(Sensor sensor)
+        //{
+        //    _sensors.InsertOne(sensor);
+        //    return sensor;
+        //}
 
-        public void Update(string id, Sensor sensorIn) =>
-            _sensors.ReplaceOne(sensor => sensor.Id == id, sensorIn);
+        //public void Update(string id, Sensor sensorIn) =>
+        //    _sensors.ReplaceOne(sensor => sensor.Id == id, sensorIn);
 
-        public void Remove(Sensor sensorIn) =>
-            _sensors.DeleteOne(sensor => sensor.Id == sensorIn.Id);
+        //public void Remove(Sensor sensorIn) =>
+        //    _sensors.DeleteOne(sensor => sensor.Id == sensorIn.Id);
 
-        public void Remove(string id) =>
-            _sensors.DeleteOne(sensor => sensor.Id == id);
+        //public void Remove(string id) =>
+        //    _sensors.DeleteOne(sensor => sensor.Id == id);
     }
 }
