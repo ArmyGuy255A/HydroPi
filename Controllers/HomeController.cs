@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using HydroPi.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HydroPi.Controllers
 {
@@ -18,6 +19,7 @@ namespace HydroPi.Controllers
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
+        [Authorize]
         public IActionResult Index()
         {
 

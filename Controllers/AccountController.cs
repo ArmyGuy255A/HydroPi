@@ -206,6 +206,9 @@ namespace HydroPi.Controllers
         public IActionResult Register(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
+
+            //TODO: Implement Logic for first-user setup notification
+
             return View();
         }
 
@@ -244,7 +247,7 @@ namespace HydroPi.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
-            return RedirectToAction(nameof(UserController.Index), "User");
+            return RedirectToAction(nameof(UsersController.Index), "User");
         }
 
         [HttpPost]
@@ -332,7 +335,7 @@ namespace HydroPi.Controllers
         {
             if (userId == null || code == null)
             {
-                return RedirectToAction(nameof(UserController.Index), "User");
+                return RedirectToAction(nameof(UsersController.Index), "User");
             }
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
@@ -452,7 +455,7 @@ namespace HydroPi.Controllers
             }
             else
             {
-                return RedirectToAction(nameof(UserController.Index), "User");
+                return RedirectToAction(nameof(UsersController.Index), "User");
             }
         }
 

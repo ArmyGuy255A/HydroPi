@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
-namespace SampleSite.Views.Manage
+namespace HydroPi.Views.Manage 
 {
     public static class ManageNavPages
     {

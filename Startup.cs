@@ -11,6 +11,7 @@ using HydroPi.Services.Identity;
 using HydroPi.Services.MongoDb;
 using Microsoft.AspNetCore.Authorization;
 using Policy;
+using HydroPi.Mailing;
 
 namespace HydroPi
 {
@@ -31,7 +32,6 @@ namespace HydroPi
             // Add Identity
             services.AddIdentityMongoDbProvider<ApplicationUser, ApplicationRole>(identity =>
             {
-                identity.Password.RequiredLength = 8;
                 // other options
                 identity.Password.RequireDigit = false;
                 identity.Password.RequireLowercase = false;
@@ -52,6 +52,9 @@ namespace HydroPi
 
             services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
             services.AddSingleton<IAuthorizationHandler, HasClaimHandler>();
+
+            // Add email sender
+            services.AddSingleton<IEmailSender, EmailSender>();
 
             // Add MongoDb Collection Microservices
             services.AddSingleton<SensorService>();

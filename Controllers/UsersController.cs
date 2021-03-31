@@ -12,13 +12,13 @@ using HydroPi.ViewModels;
 namespace HydroPi.Controllers
 {
     //[Authorize(Roles = "user")]
-    public class UserController : Controller
+    public class UsersController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
         readonly IMongoCollection<ApplicationUser> _userUserCollection;
 
-        public UserController(
+        public UsersController(
             UserManager<ApplicationUser> userManager,
             RoleManager<ApplicationRole> roleManager,
             IMongoCollection<ApplicationUser> userCollection)

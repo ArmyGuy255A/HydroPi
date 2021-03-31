@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Manage\_DefaultLayout.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Styles\_variables.scss" />
   </ItemGroup>
 
@@ -41,7 +45,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UnitOfWork\" />
     <Folder Include="wwwroot\assets\js\" />
   </ItemGroup>
 
@@ -69,12 +72,13 @@
     <None Include="Views\Manage\SetPassword.cshtml" />
     <None Include="Views\Manage\ShowRecoveryCodes.cshtml" />
     <None Include="Views\Manage\TwoFactorAuthentication.cshtml" />
+    <None Include="Views\Shared\_LayoutCard.cshtml" />
     <None Include="Views\Manage\_Layout.cshtml" />
     <None Include="Views\Manage\_ManageNav.cshtml" />
     <None Include="Views\Manage\_StatusMessage.cshtml" />
     <None Include="Views\Manage\_ViewImports.cshtml" />
-    <None Include="Views\User\Edit.cshtml" />
-    <None Include="Views\User\Index.cshtml" />
+    <None Include="Views\Users\Edit.cshtml" />
+    <None Include="Views\Users\Index.cshtml" />
   </ItemGroup>
 
 </Project>
