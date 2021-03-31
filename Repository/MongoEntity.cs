@@ -8,7 +8,6 @@ using System.ComponentModel.DataAnnotations;
 public abstract class MongoEntity : IMongoEntity
 {
     [BsonId(IdGenerator = typeof(StringObjectIdGenerator))]
-    //[BsonRepresentation(BsonType.ObjectId)]
     public string Id {get; set;}
 
     object IEntity.Id

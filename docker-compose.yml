@@ -7,7 +7,6 @@ services:
     image: mongo
     container_name: hydropi-mongodb-container
     environment: 
-      - MONGO_INITDB_DATABASE=hydropi-data
       - MONGO_INITDB_ROOT_USERNAME=pi
       - MONGO_INITDB_ROOT_PASSWORD=hydro
     volumes:

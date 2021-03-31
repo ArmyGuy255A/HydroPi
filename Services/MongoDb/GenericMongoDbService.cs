@@ -6,9 +6,8 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace HydroPi.Services
+namespace HydroPi.Services.MongoDb
 {
     public abstract class GenericMongoDbService<TEntity> : IGenericMongoDbService<TEntity>
         where TEntity : class, IMongoEntity
@@ -23,7 +22,8 @@ namespace HydroPi.Services
 
         public GenericMongoDbService(IOptionsMonitor<HydroPiDatabaseSettings> databaseSettings, string collectionName) : this()
         {
-            var client = new MongoClient(databaseSettings.CurrentValue.MongoDb);
+            var client = new MongoClient(databaseSettings.CurrentValue.ConnectionString);
+            //var client = new MongoClient("mongodb://pi:hydro@127.0.0.1:27017");
             var database = client.GetDatabase(databaseSettings.CurrentValue.DatabaseName);
             _entities = database.GetCollection<TEntity>(collectionName);
             Entities = _entities;

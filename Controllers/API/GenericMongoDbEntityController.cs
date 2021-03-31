@@ -1,11 +1,8 @@
 ﻿using HydroPi.Repository.Interfaces;
 using HydroPi.Services;
-using Microsoft.AspNetCore.Http;
+using HydroPi.Services.MongoDb;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HydroPi.Controllers.API
 {
@@ -24,7 +21,7 @@ namespace HydroPi.Controllers.API
 
         [HttpGet]
         public ActionResult<List<TEntity>> Get() =>
-            _mongoDbService.Get();
+            _mongoDbService.Get();     
 
         [HttpGet("{id}", Name = "GetTEntity")]
         public ActionResult<TEntity> Get(string id)

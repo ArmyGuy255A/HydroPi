@@ -2,7 +2,7 @@
 using MongoDB.Driver;
 using System.Collections.Generic;
 
-namespace HydroPi.Services
+namespace HydroPi.Services.MongoDb
 {
     public interface IGenericMongoDbService<TEntity>
         where TEntity : class, IMongoEntity

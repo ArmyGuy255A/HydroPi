@@ -3,15 +3,12 @@ using HydroPi.Settings;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace HydroPi.Services
+namespace HydroPi.Services.MongoDb
 {
     public class SensorService : GenericMongoDbService<Sensor>
     {
-        private readonly IMongoCollection<Sensor> _sensors;
+        //private readonly IMongoCollection<Sensor> _sensors;
         //private readonly HydroPiDatabaseSettings _databaseConfig;
         public SensorService(IOptionsMonitor<HydroPiDatabaseSettings> databaseSettings) : base(databaseSettings, databaseSettings.CurrentValue.Collections.Sensors)
         {

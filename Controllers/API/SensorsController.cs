@@ -1,5 +1,6 @@
 ﻿using HydroPi.Models;
 using HydroPi.Services;
+using HydroPi.Services.MongoDb;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;

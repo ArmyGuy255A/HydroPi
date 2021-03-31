@@ -1,27 +1,26 @@
 using HydroPi.Settings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
-using HydroPi.Services;
+//using Microsoft.Extensions.Identity.Core;
+//using Microsoft.Extensions.Identity.Stores;
+using AspNetCore.Identity.Mongo;
+using HydroPi.Services.Identity;
+using HydroPi.Services.MongoDb;
+using Microsoft.AspNetCore.Authorization;
+using Policy;
 
 namespace HydroPi
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -29,6 +28,32 @@ namespace HydroPi
             services.Configure<HydroPiDatabaseSettings>(
                 Configuration.GetSection(nameof(HydroPiDatabaseSettings)));
 
+            // Add Identity
+            services.AddIdentityMongoDbProvider<ApplicationUser, ApplicationRole>(identity =>
+            {
+                identity.Password.RequiredLength = 8;
+                // other options
+                identity.Password.RequireDigit = false;
+                identity.Password.RequireLowercase = false;
+                identity.Password.RequireNonAlphanumeric = false;
+                identity.Password.RequireUppercase = false;
+                identity.Password.RequiredLength = 1;
+                identity.Password.RequiredUniqueChars = 0;
+            },
+            mongo =>
+            {
+                //Bind to the database settings in app config
+                var databaseSettings = new HydroPiDatabaseSettings();
+                Configuration.GetSection(nameof(HydroPiDatabaseSettings)).Bind(databaseSettings);
+
+                mongo.ConnectionString = databaseSettings.IdentityConnectionString;
+                // other options
+            });
+
+            services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyProvider>();
+            services.AddSingleton<IAuthorizationHandler, HasClaimHandler>();
+
+            // Add MongoDb Collection Microservices
             services.AddSingleton<SensorService>();
 
             services.AddControllersWithViews();
@@ -65,6 +90,7 @@ namespace HydroPi
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
