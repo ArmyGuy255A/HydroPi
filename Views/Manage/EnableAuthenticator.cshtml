@@ -6,7 +6,7 @@
 }
 
 @section Head {
-    <script type="text/javascript" src="~/bundles/qrcode.min.js"></script>
+    @*<script type="text/javascript" src="~/bundles/qrcode.min.js"></script>*@
 }
 
 <h4>@ViewData["Title"]</h4>
@@ -57,7 +57,8 @@
 
 @*@_Views_Shared__ValidationScriptsPartial.*@
 
-    <script type="text/javascript" src="~/assets/vendor/qrcode.js"></script>
+    @*<script type="text/javascript" src="~/assets/vendor/qrcode.js"></script>*@
+    <script type="text/javascript" asp-src-include="~/bundles/qrcode.*.js"></script>
     <script type="text/javascript">
             new QRCode(document.getElementById("qrCode"),
                 {

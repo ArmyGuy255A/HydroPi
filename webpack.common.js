@@ -29,7 +29,8 @@ module.exports = {
         //    "./Styles/style.scss"
         //],
         icons: [
-            "./node_modules/@coreui/icons-pro/css/linear.css"
+            "./node_modules/@coreui/icons-pro/css/linear.css",
+            "./node_modules/@coreui/icons-pro/css/solid.css"
         ],
         jquery: [
             "./node_modules/jquery/dist/jquery.min.js"
