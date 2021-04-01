@@ -6,8 +6,9 @@
         <title>@ViewData["Title"] - HydroPi</title>
 
         <!-- Common styles here -->
-        <link rel="stylesheet" href="~/bundles/css/style.min.css" />
-        <link rel="stylesheet" href="~/assets/icons/all.css">
+        @*<link rel="stylesheet" href="~/bundles/css/style.min.css" />*@
+        <link rel="stylesheet" asp-href-include="~/bundles/css/vendors.*.css" />
+        <link rel="stylesheet" asp-href-include="~/bundles/css/style.*.css">
 
         @RenderSection("Head", required: false)
     </head>
@@ -56,9 +57,13 @@
         </div>
 
         <!-- Common scripts here -->
-        <script src="~/bundles/coreui.min.js"></script>
-        <script src="~/bundles/jquery.min.js"></script>
-        <script src="~/bundles/site.min.js"></script>
+        <script type="text/javascript" asp-src-include="~/bundles/runtime.*.js"></script>
+        <script type="text/javascript" asp-src-include="~/bundles/vendors.*.js"></script>
+        <script type="text/javascript" asp-src-include="~/bundles/coreui.*.js"></script>
+        <script type="text/javascript" asp-src-include="~/bundles/style.*.js"></script>
+        <script type="text/javascript" asp-src-include="~/bundles/jquery.*.js"></script>
+        <script type="text/javascript" asp-src-include="~/bundles/site.*.js"></script>
+        <script type="text/javascript" asp-src-include="~/bundles/site.*.js"></script>
 
         @RenderSection("Scripts", required: false)
     </body>

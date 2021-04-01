@@ -28,6 +28,9 @@ module.exports = {
         //style: [
         //    "./Styles/style.scss"
         //],
+        icons: [
+            "./node_modules/@coreui/icons-pro/css/linear.css"
+        ],
         jquery: [
             "./node_modules/jquery/dist/jquery.min.js"
         ],
@@ -53,7 +56,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, "wwwroot/bundles"),
-        filename: "[name].min.js",
+        filename: "[name].[contenthash].js",
         publicPath: "/"
     },
     resolve: {
@@ -72,7 +75,7 @@ module.exports = {
                         loader: MiniCssExtractPlugin.loader
                     },
                     "css-loader",
-                    "sass-loader"
+                    "sass-loader",
                 ]
             },
             {
@@ -83,6 +86,26 @@ module.exports = {
                     },
                     "css-loader"
                 ]
+            },
+            {
+                test: /\.(eot|png|jpe?g|gif|svg|ttf|woff|otf)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[contenthash].[ext]',
+                            outputPath: '../bundles/css',
+                            //publicPath: 'bundles',
+                            //publicPath: (url, resourcePath, context) => {
+                            //    const relativePath = path.relative(context, resourcePath);
+                            //    return relativePath;
+                            //},
+                            //publicPath: 'bundles/css',
+                            //postTransformPublicPath: (p) => { `__webpack_public_path__ + ${p}`},
+                            esModule: false // <- here
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -91,7 +114,38 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "css/[name].min.css"
         })
-    ]
+    ],
+    optimization: {
+        runtimeChunk: 'single',
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all',
+                },
+            },
+        },
+    }
+    //optimization: {
+    //    splitChunks: {
+    //        cacheGroups: {
+    //            commons: {
+    //                test: /[\\/]node_modules[\\/]/,
+    //                // cacheGroupKey here is `commons` as the key of the cacheGroup
+    //                name(module, chunks, cacheGroupKey) {
+    //                    const moduleFileName = module
+    //                        .identifier()
+    //                        .split('/')
+    //                        .reduceRight((item) => item);
+    //                    const allChunksNames = chunks.map((item) => item.name).join('~');
+    //                    return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
+    //                },
+    //                chunks: 'all',
+    //            },
+    //        },
+    //    },
+    //},
     //],
     //externals: {
     //    jquery: 'jQuery'
