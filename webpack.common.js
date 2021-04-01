@@ -28,9 +28,16 @@ module.exports = {
         //style: [
         //    "./Styles/style.scss"
         //],
-        //jquery: [
-        //    "./node_modules/jquery/dist/jquery.js"
-        //],
+        jquery: [
+            "./node_modules/jquery/dist/jquery.min.js"
+        ],
+        jqueryvalidation: [
+            "./node_modules/jquery-validation/dist/jquery.validate.min.js",
+            "./node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"
+        ],
+        qrcode: [
+            "./node_modules/qrcodejs2/qrcode.js"
+        ],
         style: [
             "./node_modules/@coreui/coreui-pro/dist/css/coreui.css",
             "./Styles/style.scss"

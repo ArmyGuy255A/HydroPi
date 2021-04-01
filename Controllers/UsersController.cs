@@ -32,7 +32,8 @@ namespace HydroPi.Controllers
         {
             await _roleManager.CreateAsync(new ApplicationRole("Admin"));
             var role = await _roleManager.FindByNameAsync("Admin");
-            await _roleManager.AddClaimAsync(role, new Claim("Permission", "ManageCourses"));
+            await _roleManager.AddClaimAsync(role, new Claim("Permission", "FullControl"));
+
             return View(_userManager.Users);
         }
 

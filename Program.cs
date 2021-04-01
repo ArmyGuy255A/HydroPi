@@ -9,7 +9,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity;
+using HydroPi.Services.Identity;
 
 namespace HydroPi
 {
@@ -33,7 +35,23 @@ namespace HydroPi
             try
             {
                 Log.Information("Starting Web Host");
-                CreateHostBuilder(args).Build().Run();
+                var host = CreateHostBuilder(args).Build();
+
+                //using (var scope = host.Services.CreateScope())
+                //{
+                //    var services = scope.ServiceProvider;
+                //    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                //    var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
+
+                //    var roleResult = IdentityDbValidator.ValidateRoles(roleManager).Result;
+
+                //    var validateAdminsResult = IdentityDbValidator.ValidateUsersInAdminRole(userManager, roleManager).Result;
+
+
+
+                //}
+
+                host.Run();
             }
             catch (Exception ex)
             {
@@ -44,6 +62,7 @@ namespace HydroPi
             {
                 Log.CloseAndFlush();
             }
+            
             
         }
 

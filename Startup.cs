@@ -12,20 +12,30 @@ using HydroPi.Services.MongoDb;
 using Microsoft.AspNetCore.Authorization;
 using Policy;
 using HydroPi.Mailing;
+using Westwind.AspNetCore.LiveReload;
+using System.IO;
+using Microsoft.Extensions.FileProviders;
 
 namespace HydroPi
 {
     public class Startup
     {
         public IConfiguration Configuration { get; }
-        public Startup(IConfiguration configuration)
+        private IWebHostEnvironment HostEnvironment { get; set; }
+        public Startup(IConfiguration configuration, IWebHostEnvironment hostEnvironment)
         {
             Configuration = configuration;
+            HostEnvironment = hostEnvironment;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            if (HostEnvironment.IsDevelopment())
+            {
+                services.AddDirectoryBrowser();
+            }
+
             services.Configure<HydroPiDatabaseSettings>(
                 Configuration.GetSection(nameof(HydroPiDatabaseSettings)));
 
@@ -59,6 +69,13 @@ namespace HydroPi
             // Add MongoDb Collection Microservices
             services.AddSingleton<SensorService>();
 
+            //// Add hot reloading
+            services.AddLiveReload(config =>
+            {
+                config.LiveReloadEnabled = true;
+                //config.FolderToMonitor = Path.GetFullname(Path.Combine(Env.ContentRootPath, ".."));
+            });
+
             services.AddControllersWithViews();
 
             services.AddSwaggerGen();
@@ -69,6 +86,9 @@ namespace HydroPi
         {
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
+
+            // Enable live reload middleware
+            app.UseLiveReload();
 
             if (env.IsDevelopment())
             {
@@ -81,8 +101,15 @@ namespace HydroPi
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            app.UseDefaultFiles();
+            //app.UseDefaultFiles();
             app.UseStaticFiles();
+
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+            env.WebRootPath),
+                RequestPath = "/wwwroot"
+            });
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
             // specifying the Swagger JSON endpoint.

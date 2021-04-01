@@ -8,6 +8,8 @@
         <!-- Common styles here -->
         <link rel="stylesheet" href="~/bundles/css/style.min.css" />
         <link rel="stylesheet" href="~/assets/icons/all.css">
+
+        @RenderSection("Head", required: false)
     </head>
 
 
@@ -54,11 +56,11 @@
         </div>
 
         <!-- Common scripts here -->
-
         <script src="~/bundles/coreui.min.js"></script>
         <script src="~/bundles/jquery.min.js"></script>
         <script src="~/bundles/site.min.js"></script>
-        @await RenderSectionAsync("Scripts", required: false)
+
+        @RenderSection("Scripts", required: false)
     </body>
 
 </html>

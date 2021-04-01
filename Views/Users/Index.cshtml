@@ -45,10 +45,10 @@
                             @Html.DisplayFor(modelItem => item.PhoneNumber)
                         </td>
                         <td>
-                            <a href="/user/edit/@item.UserName" class="btn btn-sm btn-outline-primary">Edit</a>
+                            <a href="/Users/edit/@item.UserName" class="btn btn-sm btn-outline-primary">Edit</a>
                         </td>
                         <td>
-                            <form method="post" action="/user/delete">
+                            <form method="post" action="/Users/delete">
                                 @Html.AntiForgeryToken()
                                 <input type="hidden" name="id" value="@item.Id" />
                                 <input type="submit" class="btn btn-danger" value="Delete" />

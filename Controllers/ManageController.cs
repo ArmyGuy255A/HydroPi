@@ -521,7 +521,7 @@ namespace SampleSite.Controllers
         {
             return string.Format(
                 AuthenticatorUriFormat,
-                _urlEncoder.Encode("IdentityDemo"),
+                _urlEncoder.Encode("HydroPi"),
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }

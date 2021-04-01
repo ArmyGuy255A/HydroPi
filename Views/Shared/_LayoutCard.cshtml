@@ -2,6 +2,10 @@
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
+@section Head {
+    @RenderSection("Head", required: false)
+}
+
 @section SidebarContent {
     @RenderSection("SidebarContent", required: false)
 }
@@ -11,7 +15,7 @@
     <div class="col-sm-12 col-md-12">
         <div class="card">
             <div class="card-body">
-                @RenderBody()
+                @RenderSection("Body", required: true)
             </div>
         </div>
     </div>
