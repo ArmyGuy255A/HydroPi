@@ -1,4 +1,6 @@
-namespace TeHydroPi.ViewModels
+using System;
+
+namespace HydroPi.ViewModels
 {
     public class ErrorViewModel
     {

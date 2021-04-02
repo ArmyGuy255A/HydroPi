@@ -1,0 +1,40 @@
+﻿
+@inject SignInManager<HydroPiUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<ul class="c-sidebar-nav">
+    <li class="c-sidebar-nav-title">Manage</li>
+
+    <li class="@ManageNavPages.IndexNavClass(ViewContext) c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" asp-action="Index">
+            <i class="c-sidebar-nav-icon cis-user" width="64" height="64" viewBox="0 0 64 64"></i>
+            Profile
+        </a>
+    </li>
+    <li class="@ManageNavPages.ChangePasswordNavClass(ViewContext) c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" asp-action="ChangePassword">
+            <i class="c-sidebar-nav-icon cil-key" width="64" height="64" viewBox="0 0 64 64"></i>
+            Password
+        </a>
+    </li>
+
+
+@if (hasExternalLogins)
+    {
+    <li class="@ManageNavPages.ExternalLoginsNavClass(ViewContext) c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" asp-action="ExternalLogins">
+            <i class="c-sidebar-nav-icon cis-external-link" width="64" height="64" viewBox="0 0 64 64"></i>
+            External logins
+        </a>
+        </li>
+}
+
+<li class="@ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext) c-sidebar-nav-item">
+    <a class="c-sidebar-nav-link" asp-action="TwoFactorAuthentication">
+        <i class="c-sidebar-nav-icon cis-screen-smartphone"></i>
+        Two-factor authentication
+    </a>
+</li>
+</ul>

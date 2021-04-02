@@ -1,5 +1,4 @@
-﻿using HydroPi.Repository.Interfaces;
-using HydroPi.Services;
+﻿using HydroPi.MongoData.Interfaces;
 using HydroPi.Services.MongoDb;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -8,13 +7,13 @@ namespace HydroPi.Controllers.API
 {
     [Route("api/[controller]")]
     [ApiController]
-    public abstract class GenericMongoDbEntityController<TEntity, TMongoDbService> : ControllerBase, IGenericMongoDbEntityController<TEntity>
+    public abstract class GenericSqlDbEntityController<TEntity, TMongoDbService> : ControllerBase, IGenericMongoDbEntityController<TEntity>
         where TEntity : class, IMongoEntity, new()
         where TMongoDbService : class, IGenericMongoDbService<TEntity>
     {
         private readonly TMongoDbService _mongoDbService;
 
-        public GenericMongoDbEntityController(TMongoDbService mongoDbService)
+        public GenericSqlDbEntityController(TMongoDbService mongoDbService)
         {
             _mongoDbService = mongoDbService;
         }

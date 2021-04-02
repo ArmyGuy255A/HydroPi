@@ -1,11 +1,11 @@
 ﻿using HydroPi.Settings;
-using HydroPi.Repository.Interfaces;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using HydroPi.MongoData.Interfaces;
 
 namespace HydroPi.Services.MongoDb
 {

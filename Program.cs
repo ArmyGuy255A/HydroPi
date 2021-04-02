@@ -11,7 +11,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
-using HydroPi.Services.Identity;
 
 namespace HydroPi
 {
@@ -19,13 +18,6 @@ namespace HydroPi
     {
         public static void Main(string[] args)
         {
-
-
-            //Log.Logger = new LoggerConfiguration()
-            //    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-            //    .Enrich.FromLogContext()
-            //    .WriteTo.Console()
-            //    .CreateLogger();
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Console()
                 .CreateBootstrapLogger();
@@ -36,21 +28,6 @@ namespace HydroPi
             {
                 Log.Information("Starting Web Host");
                 var host = CreateHostBuilder(args).Build();
-
-                //using (var scope = host.Services.CreateScope())
-                //{
-                //    var services = scope.ServiceProvider;
-                //    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
-                //    var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
-
-                //    var roleResult = IdentityDbValidator.ValidateRoles(roleManager).Result;
-
-                //    var validateAdminsResult = IdentityDbValidator.ValidateUsersInAdminRole(userManager, roleManager).Result;
-
-
-
-                //}
-
                 host.Run();
             }
             catch (Exception ex)
@@ -62,8 +39,6 @@ namespace HydroPi
             {
                 Log.CloseAndFlush();
             }
-            
-            
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

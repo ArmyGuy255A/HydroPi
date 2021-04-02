@@ -8,10 +8,8 @@ namespace HydroPi.Settings
 {
     public class HydroPiDatabaseSettings : IHydroPiDatabaseSettings
     {
-        //public string MongoDb { get; set; }
-        //public string ConnectionString { get; set; }
+        public string SQLiteConnectionString { get; set; }
         public MongoDbCollections Collections { get; set; }
-        public string IdentityDatabaseName { get; set; }
         public string DatabaseName { get; set; }
         public string Host { get; set; }
         public string Username { get; set; }
@@ -29,22 +27,13 @@ namespace HydroPi.Settings
                 return buildConnectionString(DatabaseName);
             }
         }
-        public string IdentityConnectionString
-        {
-            get
-            {
-                return String.Format("{0}/{1}", buildConnectionString(IdentityDatabaseName), IdentityDatabaseName);
-            }
-        }
 
     }
 
     public interface IHydroPiDatabaseSettings
     {
-        //string MongoDb { get; set; }
-        string ConnectionString { get; }
+        string SQLiteConnectionString { get; }
         MongoDbCollections Collections { get; set; }
-        string IdentityDatabaseName { get; set; }
         string DatabaseName { get; set; }
         string Host { get; set; }
         string Username { get; set; }

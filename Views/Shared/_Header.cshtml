@@ -1,4 +1,10 @@
-﻿<button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
+﻿@using Microsoft.AspNetCore.Identity
+@using HydroPi.Data.Models
+
+@inject SignInManager<HydroPiUser> SignInManager
+@inject UserManager<HydroPiUser> UserManager
+
+<button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
     <i class="c-icon c-icon-lg cil-menu"></i>
 </button>
 
@@ -15,56 +21,67 @@
 <ul class="c-header-nav d-md-down-none">
     <li class="c-header-nav-item px-3"><a class="c-header-nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
     <li class="c-header-nav-item px-3"><a class="c-header-nav-link" asp-controller="Home" asp-action="Index">Dashboards</a></li>
-    <li class="c-header-nav-item px-3"><a class="c-header-nav-link" asp-controller="Users" asp-action="Index">Users</a></li>
-    <li class="c-header-nav-item px-3"><a class="c-header-nav-link" asp-controller="Manage" asp-action="Index">Manage</a></li>
-    <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Settings</a></li>    
+    <li class="c-header-nav-item px-3"><a class="c-header-nav-link" asp-area="Identity" asp-page="/Account/Index" title="ZZ">Account</a></li>
+    <li class="c-header-nav-item px-3"><a class="c-header-nav-link" asp-area="Identity" asp-page="/Account/Manage/Index">Manage</a></li>
+    <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Settings</a></li>
     <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="swagger">Swagger</a></li>
 </ul>
 
-<ul class="c-header-nav mfs-auto">
-    <li class="c-header-nav-item px-3 c-d-legacy-none">
-        <button class="c-class-toggler c-header-nav-btn" type="button" id="header-tooltip" data-target="body" data-class="c-dark-theme" data-toggle="c-tooltip" data-placement="bottom" title="Toggle Light/Dark Mode">
-            <i class="c-icon c-d-dark-none cil-moon"></i>
-            <i class="c-icon c-d-default-none cil-sun"></i>
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <ul class="c-header-nav mfs-auto">
+        <li class="c-header-nav-item px-3 c-d-legacy-none">
+            <button class="c-class-toggler c-header-nav-btn" type="button" id="header-tooltip" data-target="body" data-class="c-dark-theme" data-toggle="c-tooltip" data-placement="bottom" title="Toggle Light/Dark Mode">
+                <i class="c-icon c-d-dark-none cil-moon"></i>
+                <i class="c-icon c-d-default-none cil-sun"></i>
+            </button>
+        </li>
+    </ul>
+    <ul class="c-header-nav">
+        <li class="c-header-nav-item dropdown d-md-down-none mx-2">
+            <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <i class="c-icon cil-bell"></i><span class="badge badge-pill badge-danger">5</span>
+            </a>
+            @*Notifications*@
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg pt-0">
+                <partial name="_HeaderNotifications">
+            </div>
+        </li>
+        <li class="c-header-nav-item dropdown">
+            <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                @User.Identity.Name
+                @*<div class="c-avatar"><img class="c-avatar-img" src="~/assets/img/avatars/6.jpg" alt="user@email.com"></div>*@
+            </a>
+            <div class="dropdown-menu dropdown-menu-right pt-0">
+
+                <div class="dropdown-header bg-light py-2"><strong>Settings</strong></div>
+                <a class="dropdown-item" href="#">
+                    <i class="c-icon mfe-2 cil-user"></i> Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                    <i class="c-icon mfe-2 cil-user"></i> Settings
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">
+                    <i class="c-icon mfe-2 cil-lock-locked"></i> Lock Account
+                </a><a class="dropdown-item" href="#">
+                    <i class="c-icon mfe-2 cil-account-logout"></i> Logout
+                </a>
+            </div>
+        </li>
+        <button class="c-header-toggler c-class-toggler mfe-md-3" type="button" data-target="#aside" data-class="c-sidebar-show">
+            <i class="c-icon c-icon-lg cil-applications-settings"></i>
         </button>
-    </li>
-</ul>
-<ul class="c-header-nav">
-    <li class="c-header-nav-item dropdown d-md-down-none mx-2">
-        <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="c-icon cil-bell"></i><span class="badge badge-pill badge-danger">5</span>
-        </a>
-        @*Notifications*@
-        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg pt-0">
-            <partial name="_HeaderNotifications">           
-        </div>
-    </li>
-    <li class="c-header-nav-item dropdown">
-        <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            @User.Identity.Name
-            @*<div class="c-avatar"><img class="c-avatar-img" src="~/assets/img/avatars/6.jpg" alt="user@email.com"></div>*@
-        </a>
-        <div class="dropdown-menu dropdown-menu-right pt-0">
-            
-            <div class="dropdown-header bg-light py-2"><strong>Settings</strong></div>
-            <a class="dropdown-item" href="#">
-                <i class="c-icon mfe-2 cil-user"></i> Profile
-            </a>
-            <a class="dropdown-item" href="#">
-                <i class="c-icon mfe-2 cil-user"></i> Settings
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-                <i class="c-icon mfe-2 cil-lock-locked"></i> Lock Account
-            </a><a class="dropdown-item" href="#">
-                <i class="c-icon mfe-2 cil-account-logout"></i> Logout
-            </a>
-        </div>
-    </li>
-    <button class="c-header-toggler c-class-toggler mfe-md-3" type="button" data-target="#aside" data-class="c-sidebar-show">
-        <i class="c-icon c-icon-lg cil-applications-settings"></i>
-    </button>
-</ul>
+    </ul>
+}
+else
+{
+    <partial name="_LoginPartial" />
+}
+
+
 
 @*Breadcrumb*@
 <div class="c-subheader justify-content-between px-3">

@@ -1,4 +1,4 @@
-﻿using HydroPi.Repository.Interfaces;
+﻿using HydroPi.MongoData.Interfaces;
 using MongoDB.Driver;
 using System.Collections.Generic;
 

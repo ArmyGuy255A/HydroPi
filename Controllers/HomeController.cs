@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using HydroPi.Models;
 using Microsoft.AspNetCore.Authorization;
+using HydroPi.Data.Models;
+using HydroPi.ViewModels;
 
 namespace HydroPi.Controllers
 {
@@ -19,7 +17,7 @@ namespace HydroPi.Controllers
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        [Authorize]
+        //[Authorize]
         public IActionResult Index()
         {
 

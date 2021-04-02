@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "/Views/Shared/_LayoutCard.cshtml";
+}
+
+@section Head {
+    @RenderSection("Head", required: false)
+}
+
+@section SidebarContent {
+    @RenderSection("SidebarContent", required: false)
+}
+
+@section Body {
+
+    @RenderBody()
+}
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}
