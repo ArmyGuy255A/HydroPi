@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "/Views/Shared/_LayoutCard.cshtml";
+}
+
+@section SidebarContent {
+    <partial name="_SidebarContent">
+}
+
+@section Head {
+    @RenderSection("Head", required: false)
+}
+
+@section Body {
+    @RenderBody()
+}
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

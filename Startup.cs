@@ -90,6 +90,7 @@ namespace HydroPi
             services.AddMvc()
             .AddRazorPagesOptions(options =>
             {
+                //options.RootDirectory
                 //options. = true;
                 options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
                 options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
